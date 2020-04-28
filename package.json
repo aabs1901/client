@@ -1,0 +1,16 @@
+{
+    "name": "student-sign-in-api",
+    "description": "Vie and express app, Student Sign In App ",
+    "authors": "Abdulwahid",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "pg": "^8.0.3",
+        "sequelize": "^5.21.7"
+    },
+    "devDependencies": {
+        "sqlite3": "^4.2.0"
+    }
+}

@@ -32,22 +32,23 @@ export default {
     StudentMessage
   },
   mounted() {
+    this.updateStudents()
 
   },
   methods: {
     newStudentAdded(student) {
-      this.$student_api.addStudent(student).then( stduent => {
+      this.$student_api.addStudent(student).then( student => {
         this.updateStudents()
       }) .catch( err => {
         let message = err.response.data.join(',')
         alert("error adding student", message)
       } )
 
-      }
+      
     
     },
     studentArrivedOrLeft(student) {
-      this.$student_api.updateStudents(student).then (()=>{
+      this.$student_api.updateStudent(student).then(()=>{
         this.name =student.name
         this.message = student.present ? 'Good Morning and Welcome,': 'Have a nice day goodbye,'
         this.updateStudents()
@@ -55,18 +56,20 @@ export default {
     
     },
    updateStudents( ) {
-     this.$student_api.getAllStudent().then( students => {
+     this.$student_api.getAllStudents().then( students => {
        this.students= students
      })
 
    },
    studentDeleted(student) {
-     this.$$student_api.deleteStudent(student).then (()=> {
-       this.updateStudents
+     this.$student_api.deleteStudent(student.id).then(()=> {
+       this.updateStudents()
 
      })
-   }
+   },
+   
   }
+}
 
 </script>
 
